@@ -16,10 +16,9 @@ import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
 import ViewHeadline from '@material-ui/icons/ViewHeadline';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ListItemLink } from './ListItem';
-
 import SimpleTable from '../data/SimpleTable';
 import NestedGrid from '../data/NestedGrid';
 import CustomizedTables from '../data/CustomizedTables';
@@ -85,10 +84,6 @@ const routes = [
   }
 ]
 
-
-
-// const Link = React.forwardRef((props, ref) => <RouterLink {...props} ref={ref} />);
-
 export function NavBar() {
   const classes = useStyles();
 
@@ -107,24 +102,24 @@ export function NavBar() {
                 noWrap
                 className={classes.toolbarTitle}
               >
-                Dashboard1
+                Reckon
               </Link>
               <nav>
                 <Link
                   variant="button"
                   color="inherit"
-                  href="/pricing"
+                  href="/inventory"
                   className={classes.link}
                 >
-                  Redirect
+                  Inventory
                 </Link>
                 <Link
                   variant="button"
                   color="inherit"
-                  href="/dashboard2"
+                  href="/freight"
                   className={classes.link}
                 >
-                  Dashboard2
+                  Freight
                 </Link>
                 <Link
                   variant="button"
@@ -132,7 +127,7 @@ export function NavBar() {
                   href="#"
                   className={classes.link}
                 >
-                  Support
+                  NavThree
                 </Link>
               </nav>
               <Button href="/login" color="inherit" variant="outlined" className={classes.link}>
@@ -141,7 +136,7 @@ export function NavBar() {
             </Toolbar>
           </AppBar>
 
-          <Drawer
+          {/* <Drawer
             className={classes.drawer}
             variant="permanent"
             classes={{
@@ -204,7 +199,7 @@ export function NavBar() {
                 component={route.main}
               />
             ))}
-          </main>
+          </main> */}
           {/* <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
@@ -232,18 +227,10 @@ export function NavBar() {
         </Typography>
       </main> */}
         </div>
-        <Switch>
-          {/* <Route exact path="/home" component={Home} /> */}
-          <Route exact path="/inbox" component={Inbox} />
-        </Switch>
       </Router>
     </React.Fragment>
   );
 }
-
-const Inbox = () => 
-    <h1>INBOX</h1>
-
 
 function Home() {
   return (
