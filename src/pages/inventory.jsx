@@ -1,24 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import UndoIcon from '@material-ui/icons/Undo';
 import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
 import ListIcon from '@material-ui/icons/List';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
 import ViewHeadline from '@material-ui/icons/ViewHeadline';
-import AssessmentIcon from '@material-ui/icons/Assessment';
-import Link from '@material-ui/core/Link';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ListItemLink } from '../components/ListItem';
 import SimpleTable from '../data/SimpleTable';
@@ -27,7 +20,7 @@ import CustomizedTables from '../data/CustomizedTables';
 import { NavBar } from '../components/NavBar';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
-import { Create } from '../components/inventory/Create';
+import { Create } from '../components/hooks/Create';
 
 const drawerWidth = 240;
 

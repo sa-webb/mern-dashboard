@@ -7,6 +7,7 @@ const logger = require('morgan');
 const cookieParser = require("cookie-parser");
 const itemRoutes = express.Router();
 const PORT = 5000;
+const Schema = mongoose.Schema;
 
 app.use(logger("dev"));
 app.use(cors());
@@ -30,3 +31,10 @@ app.use('/items', itemRoutes);
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
 });
+
+var Item = mongoose.model('Item', new Schema({ name: String }));
+// Works
+Item.findOne(function(error, result) {
+     console.log("result:" + result);
+     console.log("error:" + error);
+    });

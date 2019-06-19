@@ -1,27 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import SortIcon from '@material-ui/icons/Sort';
-import ViewHeadline from '@material-ui/icons/ViewHeadline';
-import AssessmentIcon from '@material-ui/icons/Assessment';
 import Link from '@material-ui/core/Link';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { ListItemLink } from './ListItem';
-import SimpleTable from '../data/SimpleTable';
-import NestedGrid from '../data/NestedGrid';
-import CustomizedTables from '../data/CustomizedTables';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -59,30 +43,6 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
 }));
-
-const routes = [  
-  {
-    path: "/dashboard/home",
-    exact: true,
-    sidebar: () => <div>home!</div>,
-    main: () => <Home/>
-  },
-  {
-      path: "/dashboard/products",
-      exact: true,
-      main: () => <SimpleTable />
-  },
-  {
-      path: "/dashboard/grid",
-      exact: true,
-      main: () => <NestedGrid/>
-  },
-  {
-      path: "/dashboard/custom",
-      exact: true,
-      main: () => <CustomizedTables />
-  }
-]
 
 export function NavBar() {
   const classes = useStyles();
@@ -230,10 +190,4 @@ export function NavBar() {
       </Router>
     </React.Fragment>
   );
-}
-
-function Home() {
-  return (
-    <h1>Home Component</h1>
-  )
 }

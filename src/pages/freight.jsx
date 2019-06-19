@@ -1,10 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -16,7 +12,6 @@ import MailIcon from "@material-ui/icons/Mail";
 import SortIcon from "@material-ui/icons/Sort";
 import ViewHeadline from "@material-ui/icons/ViewHeadline";
 import AssessmentIcon from "@material-ui/icons/Assessment";
-import Link from "@material-ui/core/Link";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ListItemLink } from "../components/ListItem";
 import SimpleTable from "../data/SimpleTable";

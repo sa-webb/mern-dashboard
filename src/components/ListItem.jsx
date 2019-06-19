@@ -15,7 +15,7 @@ export class ListItemLink extends Component {
     return (
       <li>
         <ListItem button component={this.renderLink}>
-          <ListItemIcon>{icon}</ListItemIcon>
+          <ListItemIcon >{icon}</ListItemIcon>
           <ListItemText primary={primary} />
         </ListItem>
       </li>
