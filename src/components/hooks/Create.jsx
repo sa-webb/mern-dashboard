@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginRight: 100
   },
   margin: {
     margin: theme.spacing(4),
