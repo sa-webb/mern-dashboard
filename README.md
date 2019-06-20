@@ -6,6 +6,3 @@
 - **Express**
 - **Node**
 - **MongoDB**
-
-Material-UI components
-Mongoose Schema Modeling

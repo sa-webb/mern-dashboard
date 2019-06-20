@@ -13,6 +13,7 @@ export const AppRouter = () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={MiniDrawer} />
+                <Route exact path="/createhook" component={MiniDrawer} />
                 <Route exact path="/inventory" component={Inventory} />
                 <Route exact path="/freight" component={Freight} />
                 <Route exact path="/inventory/create" component={Inventory} />
