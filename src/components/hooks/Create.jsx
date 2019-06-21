@@ -28,7 +28,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginRight: 100
+    marginRight: 450,
+    marginLeft: 50,
+    backgroundColor: 'green'
   },
   margin: {
     margin: theme.spacing(4),
@@ -70,12 +72,48 @@ export function Create() {
     <div className={classes.root}>
       <form onSubmit={onSubmit}>
       <TextField
+        id="outlined-adornment-name"
+        className={clsx(classes.margin, classes.textField)}
+        variant="outlined"
+        label="Name"
+        value={values.name}
+        onChange={handleChange('name')}
+        InputProps={{
+          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+        }}
+      />
+      <TextField
         id="outlined-simple-start-adornment"
         className={clsx(classes.margin, classes.textField)}
         variant="outlined"
         label="With outlined TextField"
         InputProps={{
           startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+        }}
+      />
+      
+      <TextField
+        id="outlined-adornment-weight"
+        className={clsx(classes.margin, classes.textField)}
+        variant="outlined"
+        label="Weight"
+        value={values.weight}
+        onChange={handleChange('weight')}
+        helperText="Full Weight"
+        InputProps={{
+          endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+        }}
+      />
+      <TextField
+        id="outlined-adornment-weight"
+        className={clsx(classes.margin, classes.textField)}
+        variant="outlined"
+        label="Empty Weight"
+        value={values.weight}
+        onChange={handleChange('weight')}
+        helperText="Weight"
+        InputProps={{
+          endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
         }}
       />
       <TextField
@@ -95,29 +133,6 @@ export function Create() {
           </MenuItem>
         ))}
       </TextField>
-      <TextField
-        id="outlined-adornment-name"
-        className={clsx(classes.margin, classes.textField)}
-        variant="outlined"
-        label="Name"
-        value={values.name}
-        onChange={handleChange('name')}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
-      />
-      <TextField
-        id="outlined-adornment-weight"
-        className={clsx(classes.margin, classes.textField)}
-        variant="outlined"
-        label="Weight"
-        value={values.weight}
-        onChange={handleChange('weight')}
-        helperText="Weight"
-        InputProps={{
-          endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
-        }}
-      />
       <TextField
         id="outlined-adornment-password"
         className={clsx(classes.margin, classes.textField)}
