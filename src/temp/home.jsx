@@ -26,6 +26,8 @@ import { Create } from '../components/hooks/Create';
 // eslint-disable-next-line
 import CreateInvoice from '../components/inventory/Create';
 
+import MaterialUIPickers from '../components/DatePicker';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -99,7 +101,12 @@ const routes = [
       path: "/createhook",
       exact: true,
       main: () => <Create />
-  }
+    },
+    {
+      path: "/picker",
+      exact: true,
+      main: () => < MaterialUIPickers />
+    }
 ]
 
 export default function MiniDrawer() {
@@ -142,6 +149,7 @@ export default function MiniDrawer() {
             variant="h6"
             color="inherit"
             href="/"
+            fontWeight='bold'
           >
               Reckon 
           </Link>
@@ -175,6 +183,11 @@ export default function MiniDrawer() {
             />
             <ListItemLink
                 to="/createhook"
+                primary="Create Hook"
+                icon={<NoteAddIcon/>}
+            />
+            <ListItemLink
+                to="/picker"
                 primary="Create Hook"
                 icon={<NoteAddIcon/>}
             />
