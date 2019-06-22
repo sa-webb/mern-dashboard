@@ -16,6 +16,7 @@ export const AppRouter = () => {
                 <Route exact path="/" component={MiniDrawer} />
                 <Route exact path="/picker" component={MaterialUIPickers} />
                 <Route exact path="/createhook" component={MiniDrawer} />
+                <Route exact path="/create" component={MiniDrawer} />
                 <Route exact path="/inventory" component={Inventory} />
                 <Route exact path="/freight" component={Freight} />
                 <Route exact path="/inventory/create" component={Inventory} />

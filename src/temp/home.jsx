@@ -24,7 +24,7 @@ import Link from '@material-ui/core/Link';
 // eslint-disable-next-line
 import { Create } from '../components/hooks/Create';
 // eslint-disable-next-line
-import CreateInvoice from '../components/inventory/Create';
+import { CreateInvoice } from '../components/inventory/Create';
 
 import MaterialUIPickers from '../components/DatePicker';
 
