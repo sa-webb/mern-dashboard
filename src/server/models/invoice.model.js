@@ -5,6 +5,9 @@ let Invoice = new Schema({
     name: {
         type: String
     },
+    date: {
+        type: Date
+    },
     full: {
         type: Number
     }
