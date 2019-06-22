@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { withStyles } from "@material-ui/styles"
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
 
 const ranges = [
   {
@@ -26,162 +27,142 @@ const ranges = [
   }
 ];
 
-const styles = {
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  margin: {
-    spacing: 2
-  },
-  textField: {
-    flexBasis: 400
-  }
-}
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    marginRight: 450,
+    marginLeft: 50,
+    backgroundColor: "cyan"
   },
   margin: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(4)
   },
   textField: {
     flexBasis: 400
   }
 }));
 
-class CreateInvoice extends Component {
-  constructor(props) {
-    super(props);
-    this.onChangeInvoiceName = this.onChangeInvoiceName.bind(this);
-    this.onChangeInvoiceFull = this.onChangeInvoiceFull.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+export function CreateInvoice() {
+  const classes = useStyles();
 
-    this.state = {
-      name: '',
-      full: '',
-    };
-  }
+  const [values, setValues] = React.useState({
+    name: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false
+  });
 
-  onChangeInvoiceFull(e) {
-    this.setState({
-        full: e.target.value
-    })
-  }
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
-  onChangeInvoiceName(e) {
-    this.setState({
-      name: e.target.value,
-    });
-  }
-  onSubmit(e) {
+  const handleChange = prop => event => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  function handleDateChange(date) {
+    setSelectedDate(date);
+  };
+
+  const onSubmit = e => {
     e.preventDefault();
     const newInvoice = {
-      name: this.state.name,
-      full: this.state.full,
+      name: values.name,
+      date: selectedDate
     };
     axios
       .post("http://localhost:5000/invoices/add", newInvoice)
       .then(res => console.log(res.data));
+    
+  };
 
-    this.setState({
-      name: '',
-      full: '',
-    });
-  }
-
-  render() {
-    const classes = { useStyles };
-    return (
-      <div className={classes.root}>
-        <form onSubmit={this.onSubmit}>
-          <TextField
-        id="outlined-simple-start-adornment"
-        className={clsx(classes.margin, classes.textField)}
-        variant="outlined"
-        label="With outlined TextField"
-        InputProps={{
-          startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-        }}
-      />
-          {/* <TextField
-        select
-        className={clsx(classes.margin, classes.textField)}
-        variant="outlined"
-        label="With Select"
-        value={values.weightRange}
-        onChange={handleChange('weightRange')}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-        }}
-      >
-        {ranges.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField> */}
-          <TextField
-            id="outlined-adornment-amount"
-            className={clsx(classes.margin, classes.textField)}
-            variant="outlined"
-            label="Amount"
-            value={this.state.name}
-            onChange={this.onChangeInvoiceName}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              )
+  return (
+    <div className={classes.root}>
+      <form onSubmit={onSubmit}>
+        <TextField
+          id="outlined-adornment-name"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          label="Name"
+          value={values.name}
+          onChange={handleChange("name")}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">$</InputAdornment>
+          }}
+        />
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            className={classes.margin}
+            id="mui-pickers-date"
+            label="Date picker"
+            value={selectedDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              "aria-label": "change date"
             }}
           />
-          <TextField
-        id="outlined-adornment-weight"
-        className={clsx(classes.margin, classes.textField)}
-        variant="outlined"
-        label="Weight"
-        value={this.state.full}
-        onChange={this.onChangeInvoiceFull}
-        helperText="Weight"
-        InputProps={{
-          endAdornment: <InputAdornment position="end">Lbs</InputAdornment>,
-        }}
-      />
-          {/* <TextField
-        id="outlined-adornment-password"
-        className={clsx(classes.margin, classes.textField)}
-        variant="outlined"
-        type={values.showPassword ? 'text' : 'password'}
-        label="Password"
-        value={values.password}
-        onChange={handleChange('password')}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                edge="end"
-                aria-label="Toggle password visibility"
-                onClick={handleClickShowPassword}
-              >
-                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      /> */}
-          <div className="form-group">
-            <input
-              type="submit"
-              value="Create Invoice"
-              className="btn-lg"
-              style={{ color: "white", backgroundColor: "#256331" }}
-            />
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
+        </MuiPickersUtilsProvider>
 
-export default withStyles(styles)(CreateInvoice);
+        <TextField
+          id="outlined-simple-start-adornment"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          label="With outlined TextField"
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Kg</InputAdornment>
+          }}
+        />
+
+        <TextField
+          id="outlined-adornment-weight"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          label="Weight"
+          value={values.weight}
+          onChange={handleChange("weight")}
+          helperText="Full Weight"
+          InputProps={{
+            endAdornment: <InputAdornment position="end">Kg</InputAdornment>
+          }}
+        />
+        <TextField
+          id="outlined-adornment-weight"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          label="Empty Weight"
+          value={values.weight}
+          onChange={handleChange("weight")}
+          helperText="Weight"
+          InputProps={{
+            endAdornment: <InputAdornment position="end">Kg</InputAdornment>
+          }}
+        />
+        <TextField
+          select
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          label="With Select"
+          value={values.weightRange}
+          onChange={handleChange("weightRange")}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Kg</InputAdornment>
+          }}
+        >
+          {ranges.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <div className="form-group">
+          <input
+            type="submit"
+            value="Create Invoice"
+            className="btn-lg"
+            style={{ color: "white", backgroundColor: "#256331" }}
+          />
+        </div>
+      </form>
+    </div>
+  );
+}
