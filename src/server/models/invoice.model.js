@@ -2,13 +2,31 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Invoice = new Schema({
-    name: {
+    logger_name: {
         type: String
     },
     date: {
         type: Date
     },
     full: {
+        type: Number
+    },
+    empty: {
+        type: Number
+    },
+    difference: {
+        type: Number
+    },
+    tons: {
+        type: Number
+    },
+    species: {
+        type: String
+    },
+    price: {
+        type: Number
+    },
+    total: {
         type: Number
     }
 });

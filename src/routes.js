@@ -7,15 +7,14 @@ import { Inventory } from './pages/inventory';
 import { Freight } from './pages/freight';
 
 import MiniDrawer from './temp/home';
-import MaterialUIPickers from './components/DatePicker';
+
+import Fetch from './components/hooks/Fetch';
 
 export const AppRouter = () => {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={MiniDrawer} />
-                <Route exact path="/picker" component={MaterialUIPickers} />
-                <Route exact path="/createhook" component={MiniDrawer} />
+                <Route exact path="/" component={Fetch} />
                 <Route exact path="/create" component={MiniDrawer} />
                 <Route exact path="/inventory" component={Inventory} />
                 <Route exact path="/freight" component={Freight} />
