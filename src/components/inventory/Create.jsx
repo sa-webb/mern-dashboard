@@ -11,19 +11,28 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
+import { Button } from "@material-ui/core";
 
 const ranges = [
   {
-    value: "0-20",
-    label: "0 to 20"
+    value: "red oak",
+    label: "Red Oak"
   },
   {
-    value: "21-50",
-    label: "21 to 50"
+    value: "white oak",
+    label: "White Oak"
   },
   {
-    value: "51-100",
-    label: "51 to 100"
+    value: "mx",
+    label: "Mx"
+  },
+  {
+    value: "poplar",
+    label: "Poplar"
+  },
+  {
+    value: "misc",
+    label: "Misc"
   }
 ];
 
@@ -32,33 +41,51 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap",
     marginRight: 450,
-    marginLeft: 50,
-    backgroundColor: "cyan"
+    marginLeft: 40,
   },
   margin: {
-    margin: theme.spacing(4)
+    margin: theme.spacing(3),
   },
   textField: {
-    flexBasis: 400
+    flexBasis: 400,
+    width: 200,
+  },
+  buttonMargin: {
+    margin: theme.spacing(3),
+    marginLeft: 80,
+    width: 100
   }
 }));
+
+const initialState = {
+  logger_name: '',
+  full: '',
+  empty: '',
+  difference: '',
+  pounds: '',
+  tons: '',
+  species: '',
+  price: '',
+  total: ''
+}
 
 export function CreateInvoice() {
   const classes = useStyles();
 
-  const [values, setValues] = React.useState({
-    name: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false
-  });
+  const [
+    { logger_name, full, empty, species, price },
+    setState ] = React.useState(initialState);
+
+  const clearState = () => {
+    setState({ ...initialState })
+  };
+
+  const onChange = e => {
+    const { name, value } = e.target;
+    setState(prevState => ({ ...prevState, [name]: value}))
+  };
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   function handleDateChange(date) {
     setSelectedDate(date);
@@ -67,13 +94,19 @@ export function CreateInvoice() {
   const onSubmit = e => {
     e.preventDefault();
     const newInvoice = {
-      name: values.name,
-      date: selectedDate
+      logger_name: logger_name,
+      date: selectedDate,
+      full: full,
+      empty: empty,
+      difference: full - empty,
+      tons: Math.round(((full - empty) / 2000) * 100) / 100,
+      species: species,
+      price: price,
+      total: Math.round(((full - empty) / 2000) * 100) / 100 * price
     };
     axios
       .post("http://localhost:5000/invoices/add", newInvoice)
-      .then(res => console.log(res.data));
-    
+      .then(clearState);
   };
 
   return (
@@ -83,13 +116,13 @@ export function CreateInvoice() {
           id="outlined-adornment-name"
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
-          label="Name"
-          value={values.name}
-          onChange={handleChange("name")}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>
-          }}
+          name="logger_name"
+          label="Logger Name"
+          value={logger_name}
+          onChange={onChange}
+          
         />
+
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             className={classes.margin}
@@ -104,25 +137,15 @@ export function CreateInvoice() {
         </MuiPickersUtilsProvider>
 
         <TextField
-          id="outlined-simple-start-adornment"
-          className={clsx(classes.margin, classes.textField)}
-          variant="outlined"
-          label="With outlined TextField"
-          InputProps={{
-            startAdornment: <InputAdornment position="start">Kg</InputAdornment>
-          }}
-        />
-
-        <TextField
           id="outlined-adornment-weight"
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
-          label="Weight"
-          value={values.weight}
-          onChange={handleChange("weight")}
-          helperText="Full Weight"
+          label="Full Weight"
+          name="full"
+          value={full}
+          onChange={onChange}
           InputProps={{
-            endAdornment: <InputAdornment position="end">Kg</InputAdornment>
+            endAdornment: <InputAdornment position="end">lbs</InputAdornment>
           }}
         />
         <TextField
@@ -130,23 +153,45 @@ export function CreateInvoice() {
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
           label="Empty Weight"
-          value={values.weight}
-          onChange={handleChange("weight")}
-          helperText="Weight"
+          name="empty"
+          value={empty}
+          onChange={onChange}
           InputProps={{
-            endAdornment: <InputAdornment position="end">Kg</InputAdornment>
+            endAdornment: <InputAdornment position="end">lbs</InputAdornment>
+          }}
+        />
+        <TextField
+          id="outlined-adornment-weight"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          name="difference"
+          label="Weight"
+          value={full - empty}
+          onChange={onChange}
+          InputProps={{
+            endAdornment: <InputAdornment position="end">lbs</InputAdornment>
+          }}
+        />
+        <TextField
+          id="outlined-adornment-weight"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          name="tons"
+          label="Tons"
+          value={Math.round(((full - empty) / 2000) * 100) / 100}
+          onChange={onChange}
+          InputProps={{
+            endAdornment: <InputAdornment position="end">tons</InputAdornment>
           }}
         />
         <TextField
           select
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
-          label="With Select"
-          value={values.weightRange}
-          onChange={handleChange("weightRange")}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">Kg</InputAdornment>
-          }}
+          name="species"
+          value={species}
+          onChange={onChange}
+          label="Species"
         >
           {ranges.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -154,14 +199,35 @@ export function CreateInvoice() {
             </MenuItem>
           ))}
         </TextField>
-        <div className="form-group">
-          <input
-            type="submit"
-            value="Create Invoice"
-            className="btn-lg"
-            style={{ color: "white", backgroundColor: "#256331" }}
-          />
-        </div>
+        <TextField
+          id="outlined-adornment-weight"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          label="Price"
+          name="price"
+          value={price}
+          onChange={onChange}
+        />
+        <TextField
+          id="outlined-adornment-name"
+          className={clsx(classes.margin, classes.textField)}
+
+          label="Total"
+          value={Math.round(((full - empty) / 2000) * 100) / 100 * price}
+          onChange={onChange}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">$</InputAdornment>
+          }}
+        />
+        <Button 
+          className={classes.buttonMargin}
+          variant="contained"
+          size="large"
+          color="primary"
+          type="submit"
+        >  
+           Create 
+        </Button>
       </form>
     </div>
   );

@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
   link: {
     margin: theme.spacing(1, 1.5),
     fontWeight: 'bold',
-    fontSize: 12
+    fontSize: 12,
+    marginRight: 10
   },
   drawer: {
     width: drawerWidth,
