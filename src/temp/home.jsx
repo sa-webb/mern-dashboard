@@ -24,7 +24,6 @@ import { CreateInvoice } from "../components/inventory/Create";
 import InvoiceList from '../components/inventory/List';
 import { ListItemLink } from "../components/ListItem";
 import SimpleTable from '../data/SimpleTable';
-import { OverView } from '../components/OverView';
 
 const drawerWidth = 240;
 
@@ -106,7 +105,7 @@ const routes = [
   {
     path: "/",
     exact: true,
-    main: () => <OverView />
+    main: () => <CreateInvoice />
   },
   {
     path: "/create",
@@ -125,7 +124,7 @@ const routes = [
   }
 ];
 
-export default function MiniDrawer() {
+export function Home() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
