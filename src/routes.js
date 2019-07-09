@@ -12,7 +12,6 @@ export const AppRouter = () => {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/inventory" component={Inventory} />
                 <Route exact path="/freight" component={Freight} />
-                <Route exact path="/inventory/create" component={Inventory} />
             </Switch>
         </Router>
     )

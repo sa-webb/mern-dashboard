@@ -3,12 +3,6 @@ import axios from 'axios';
 
 const { useState } = React;
 
-function signupUser() {
-  return new Promise(resolve => {
-    setTimeout(resolve, 1000);
-  });
-}
-
 const initialState = {
   username: "",
   email: "",

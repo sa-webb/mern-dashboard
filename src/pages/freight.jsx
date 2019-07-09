@@ -13,7 +13,7 @@ import SortIcon from "@material-ui/icons/Sort";
 import ViewHeadline from "@material-ui/icons/ViewHeadline";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { ListItemLink } from "../components/ListItem";
+import { ListItemLink } from "../components/helpers/ListItem";
 import SimpleTable from "../data/SimpleTable";
 import NestedGrid from "../data/NestedGrid";
 import CustomizedTables from "../data/CustomizedTables";
