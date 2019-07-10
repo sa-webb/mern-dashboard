@@ -14,13 +14,12 @@ import SortIcon from '@material-ui/icons/Sort';
 import ViewHeadline from '@material-ui/icons/ViewHeadline';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ListItemLink } from '../components/helpers/ListItem';
-import SimpleTable from '../data/SimpleTable';
 import NestedGrid from '../data/NestedGrid';
 import CustomizedTables from '../data/CustomizedTables';
 import { NavBar } from '../components/NavBar';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
-import { Create } from '../components/hooks/Create';
+import { CreateInvoice } from '../components/inventory/Create';
 
 const drawerWidth = 240;
 
@@ -62,17 +61,12 @@ const routes = [
   {
     path: "/inventory/create",
     exact: true,
-    main: () => <Create />
+    main: () => <CreateInvoice />
   },
   {
     path: "/inventory/home",
     exact: true,
     main: () => <Home/>
-  },
-  {
-      path: "/inventory/products",
-      exact: true,
-      main: () => <SimpleTable />
   },
   {
       path: "/inventory/grid",

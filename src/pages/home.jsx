@@ -5,26 +5,28 @@ import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import Link from "@material-ui/core/Link";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListIcon from "@material-ui/icons/List";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import NoteAddIcon from "@material-ui/icons/NoteAdd";
+import AssessmentIcon from "@material-ui/icons/AssessmentOutlined";
+import EventIcon from "@material-ui/icons/EventNoteOutlined";
+import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
+import AddBoxIcon from "@material-ui/icons/AddBoxOutlined";
+import LibraryAddIcon from "@material-ui/icons/LibraryAddOutlined";
+import LibraryListIcon from "@material-ui/icons/LibraryBooksOutlined";
 import clsx from "clsx";
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { CreateInvoice } from "../components/inventory/Create";
+import { CreateFreightInvoice } from "../components/freight/Create";
 import InvoiceList from '../components/inventory/List';
 import { ListItemLink } from "../components/helpers/ListItem";
-import SimpleTable from '../data/SimpleTable';
 import Planets from '../components/hooks/Fetch';
+import MockInvoices from '../mock/MockInvoices';
+import MockFreight from '../mock/MockFreight';
 
 const drawerWidth = 240;
 
@@ -116,13 +118,24 @@ const routes = [
   {
     path: "/invoices",
     exact: true,
-    main: () => <SimpleTable />
+    main: () => <MockInvoices />
   },
   {
     path: "/oldinvoices",
     exact: true,
     main: () => <InvoiceList />
-  }
+  },
+  {
+    path: "/freight/create",
+    exact: true,
+    main: () => <CreateFreightInvoice />
+  },
+  {
+    path: "/freight/invoices",
+    exact: true,
+    main: () => <MockFreight />
+  },
+
 ];
 
 export function Home() {
@@ -162,7 +175,7 @@ export function Home() {
                 <MenuIcon />
               </IconButton>
               <Link variant="h6" color="inherit" href="/" className={classes.toolbarTitle} >
-                Johnson Sawmill
+                Reckon
               </Link>
               <nav>
                 <Link
@@ -192,6 +205,7 @@ export function Home() {
               </nav>
             </Toolbar>
           </AppBar>
+
           <Drawer
             variant="permanent"
             className={clsx(classes.drawer, {
@@ -216,6 +230,7 @@ export function Home() {
               </IconButton>
             </div>
             <Divider />
+
             <List component="nav">
               <ListItemLink
                 to="/create"
@@ -230,22 +245,37 @@ export function Home() {
               <ListItemLink
                 to="/oldinvoices"
                 primary="Old Invoices"
-                icon={<ListIcon fontSize="large" />}
+                icon={<AssessmentIcon fontSize="large" />}
+              />
+            </List>
+            <Divider />
+
+            <List>
+            <ListItemLink
+                to="/freight/create"
+                primary="Lumber Invoice"
+                icon={<AddBoxIcon fontSize="large" />}
+              />
+              <ListItemLink
+                to="/freight/invoices"
+                primary="List Invoices"
+                icon={<EventIcon fontSize="large" />}
               />
             </List>
 
             <Divider />
 
-            <List>
-              {["All mail", "Trash", "Spam"].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
-            </List>
+            <ListItemLink
+                to="/freight/invoices"
+                primary="Add Maintenance"
+                icon={<LibraryAddIcon fontSize="large" />}
+              />
+            <ListItemLink
+                to="/freight/invoices"
+                primary="Maintenance Log"
+                icon={<LibraryListIcon fontSize="large" />}
+              />
+
           </Drawer>
 
           <main className={classes.content}>

@@ -10,8 +10,12 @@ export const AppRouter = () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={Home} />
+
                 <Route exact path="/inventory" component={Inventory} />
+
                 <Route exact path="/freight" component={Freight} />
+                <Route exact path="/freight/invoices" component={Home} />
+
             </Switch>
         </Router>
     )

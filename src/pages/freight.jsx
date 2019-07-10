@@ -14,7 +14,7 @@ import ViewHeadline from "@material-ui/icons/ViewHeadline";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ListItemLink } from "../components/helpers/ListItem";
-import SimpleTable from "../data/SimpleTable";
+import MockFreight from "../mock/MockFreight";
 import NestedGrid from "../data/NestedGrid";
 import CustomizedTables from "../data/CustomizedTables";
 import { NavBar } from "../components/NavBar";
@@ -60,12 +60,12 @@ const routes = [
     path: "/freight/home",
     exact: true,
     sidebar: () => <div>home!</div>,
-    main: () => <SimpleTable />
+    main: () => <MockFreight />
   },
   {
     path: "/freight/products",
     exact: true,
-    main: () => <SimpleTable />
+    main: () => <MockFreight />
   },
   {
     path: "/freight/grid",

@@ -4,7 +4,6 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -13,42 +12,19 @@ import {
 } from "@material-ui/pickers";
 import { Button } from "@material-ui/core";
 
-const ranges = [
-  {
-    value: "red oak",
-    label: "Red Oak"
-  },
-  {
-    value: "white oak",
-    label: "White Oak"
-  },
-  {
-    value: "mx",
-    label: "Mx"
-  },
-  {
-    value: "poplar",
-    label: "Poplar"
-  },
-  {
-    value: "misc",
-    label: "Misc"
-  }
-];
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
     marginRight: 450,
-    marginLeft: 40,
+    marginLeft: 40
   },
   margin: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(3)
   },
   textField: {
     flexBasis: 400,
-    width: 200,
+    width: 200
   },
   buttonMargin: {
     margin: theme.spacing(3),
@@ -58,58 +34,88 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const initialState = {
-  logger_name: '',
-  full: '',
-  empty: '',
-  difference: '',
-  pounds: '',
-  tons: '',
-  species: '',
-  price: '',
-  total: ''
-}
+  invoice_number: "",
+  date: "",
+  vendor: "",
+  customer: "",
+  quantity1: "",
+  description1: "",
+  amount1: "",
+  quantity2: "",
+  description2: "",
+  amount2: "",
+  quantity3: "",
+  description3: "",
+  amount3: "",
+  quantity4: "",
+  description4: "",
+  amount4: "",
+  total: ""
+};
 
-export function CreateInvoice() {
+export const CreateFreightInvoice = () => {
   const classes = useStyles();
-
   const [
-    { logger_name, full, empty, species, price },
-    setState ] = React.useState(initialState);
-
+    {
+      invoice_number,
+      date,
+      vendor,
+      customer,
+      quantity1,
+      description1,
+      amount1,
+      quantity2,
+      description2,
+      amount2,
+      quantity3,
+      description3,
+      amount3,
+      quantity4,
+      description4,
+      amount4,
+      total
+    },
+    setState
+  ] = React.useState(initialState);
   const clearState = () => {
-    setState({ ...initialState })
+    setState({ ...initialState });
   };
 
   const onChange = e => {
     const { name, value } = e.target;
-    setState(prevState => ({ ...prevState, [name]: value}))
+    setState(prevState => ({ ...prevState, [name]: value }));
   };
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
-
   function handleDateChange(date) {
     setSelectedDate(date);
-  };
+  }
 
   const onSubmit = e => {
     e.preventDefault();
-    const newInvoice = {
-      logger_name: logger_name,
-      date: selectedDate,
-      full: full,
-      empty: empty,
-      difference: full - empty,
-      tons: Math.round(((full - empty) / 2000) * 100) / 100,
-      species: species,
-      price: price,
-      total: Math.round(((full - empty) / 2000) * 100) / 100 * price
+    const newFreightInvoice = {
+      invoice_number: invoice_number,
+      date: date,
+      vendor: vendor,
+      customer: customer,
+      quantity1: quantity1,
+      description1: description1,
+      amount1: amount1,
+      quantity2: quantity2,
+      description2: description2,
+      amount2: amount2,
+      quantity3: quantity3,
+      description3: description3,
+      amount3: amount3,
+      quantity4: quantity4,
+      description4: description4,
+      amount4: amount4,
+      total: total
     };
     axios
-      .post("http://localhost:5000/invoices/add", newInvoice)
+      .post("http://localhost:5000/freight/add", newFreightInvoice)
       .then(clearState);
   };
-
-  // Wrap in Paper
   return (
     <div className={classes.root}>
       <form onSubmit={onSubmit}>
@@ -119,9 +125,8 @@ export function CreateInvoice() {
           variant="outlined"
           name="logger_name"
           label="Logger Name"
-          value={logger_name}
+          value={invoice_number}
           onChange={onChange}
-          
         />
 
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -141,9 +146,9 @@ export function CreateInvoice() {
           id="outlined-adornment-weight"
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
-          label="Full Weight"
+          label="Vendor"
           name="full"
-          value={full}
+          value={vendor}
           onChange={onChange}
           InputProps={{
             endAdornment: <InputAdornment position="end">lbs</InputAdornment>
@@ -153,9 +158,9 @@ export function CreateInvoice() {
           id="outlined-adornment-weight"
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
-          label="Empty Weight"
+          label="Customer"
           name="empty"
-          value={empty}
+          value={customer}
           onChange={onChange}
           InputProps={{
             endAdornment: <InputAdornment position="end">lbs</InputAdornment>
@@ -166,8 +171,8 @@ export function CreateInvoice() {
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
           name="difference"
-          label="Weight"
-          value={full - empty}
+          label="Quantity 1"
+          value={quantity1}
           onChange={onChange}
           InputProps={{
             endAdornment: <InputAdornment position="end">lbs</InputAdornment>
@@ -178,58 +183,24 @@ export function CreateInvoice() {
           className={clsx(classes.margin, classes.textField)}
           variant="outlined"
           name="tons"
-          label="Tons"
-          value={Math.round(((full - empty) / 2000) * 100) / 100}
+          label="Description1"
+          value={description1}
           onChange={onChange}
           InputProps={{
             endAdornment: <InputAdornment position="end">tons</InputAdornment>
           }}
         />
-        <TextField
-          select
-          className={clsx(classes.margin, classes.textField)}
-          variant="outlined"
-          name="species"
-          value={species}
-          onChange={onChange}
-          label="Species"
-        >
-          {ranges.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          id="outlined-adornment-weight"
-          className={clsx(classes.margin, classes.textField)}
-          variant="outlined"
-          label="Price"
-          name="price"
-          value={price}
-          onChange={onChange}
-        />
-        <TextField
-          id="outlined-adornment-name"
-          className={clsx(classes.margin, classes.textField)}
-
-          label="Total"
-          value={Math.round(((full - empty) / 2000) * 100) / 100 * price}
-          onChange={onChange}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>
-          }}
-        />
-        <Button 
+        
+        <Button
           className={classes.buttonMargin}
           variant="contained"
           size="large"
           color="primary"
           type="submit"
-        >  
-           Create 
+        >
+          Create
         </Button>
       </form>
     </div>
   );
-}
+};
