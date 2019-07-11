@@ -14,7 +14,6 @@ import SortIcon from '@material-ui/icons/Sort';
 import ViewHeadline from '@material-ui/icons/ViewHeadline';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ListItemLink } from '../components/helpers/ListItem';
-import NestedGrid from '../data/NestedGrid';
 import CustomizedTables from '../data/CustomizedTables';
 import { NavBar } from '../components/NavBar';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
@@ -67,11 +66,6 @@ const routes = [
     path: "/inventory/home",
     exact: true,
     main: () => <Home/>
-  },
-  {
-      path: "/inventory/grid",
-      exact: true,
-      main: () => <NestedGrid/>
   },
   {
       path: "/inventory/custom",

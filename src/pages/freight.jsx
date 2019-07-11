@@ -15,7 +15,6 @@ import AssessmentIcon from "@material-ui/icons/Assessment";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ListItemLink } from "../components/helpers/ListItem";
 import MockFreight from "../mock/MockFreight";
-import NestedGrid from "../data/NestedGrid";
 import CustomizedTables from "../data/CustomizedTables";
 import { NavBar } from "../components/NavBar";
 import Create from "@material-ui/icons/Create";
@@ -66,11 +65,6 @@ const routes = [
     path: "/freight/products",
     exact: true,
     main: () => <MockFreight />
-  },
-  {
-    path: "/freight/grid",
-    exact: true,
-    main: () => <NestedGrid />
   },
   {
     path: "/frieght/custom",
