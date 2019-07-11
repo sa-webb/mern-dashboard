@@ -23,9 +23,7 @@ router.get("/", async (req, res) => {
 router.get('/total', async (req, res) => {
   Invoice.aggregate([
     {
-      $match: {
-        logger_name: 'chip johnson'
-      }
+      $count: 'count'
     }
   ], function(err, results) {
     if (err) {
