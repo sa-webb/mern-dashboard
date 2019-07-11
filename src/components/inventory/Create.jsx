@@ -12,29 +12,7 @@ import {
   KeyboardDatePicker
 } from "@material-ui/pickers";
 import { Button } from "@material-ui/core";
-
-const ranges = [
-  {
-    value: "red oak",
-    label: "Red Oak"
-  },
-  {
-    value: "white oak",
-    label: "White Oak"
-  },
-  {
-    value: "mx",
-    label: "Mx"
-  },
-  {
-    value: "poplar",
-    label: "Poplar"
-  },
-  {
-    value: "misc",
-    label: "Misc"
-  }
-];
+import { Species as types } from "../../data/Species";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -194,7 +172,7 @@ export function CreateInvoice() {
           onChange={onChange}
           label="Species"
         >
-          {ranges.map(option => (
+          {types.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>

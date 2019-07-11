@@ -20,12 +20,9 @@ import LibraryListIcon from "@material-ui/icons/LibraryBooksOutlined";
 import clsx from "clsx";
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { CreateInvoice } from "../components/inventory/Create";
-import { CreateFreightInvoice } from "../components/freight/Create";
+
 import { ListItemLink } from "../components/helpers/ListItem";
-import Planets from '../components/hooks/Fetch';
-import MockInvoices from '../mock/MockInvoices';
-import MockFreight from '../mock/MockFreight';
+import { routes } from '../constants/home.routes';
 
 const drawerWidth = 240;
 
@@ -102,40 +99,6 @@ const useStyles = makeStyles(theme => ({
     marginRight: 15
   },
 }));
-
-const routes = [
-  {
-    path: "/",
-    exact: true,
-    main: () => <Planets />
-  },
-  {
-    path: "/create",
-    exact: true,
-    main: () => <CreateInvoice />
-  },
-  {
-    path: "/inventory/invoices",
-    exact: true,
-    main: () => <Planets />
-  },
-  {
-    path: "/mockinvoices",
-    exact: true,
-    main: () => <MockInvoices />
-  },
-  {
-    path: "/freight/create",
-    exact: true,
-    main: () => <CreateFreightInvoice />
-  },
-  {
-    path: "/freight/invoices",
-    exact: true,
-    main: () => <MockFreight />
-  },
-
-];
 
 export function Home() {
   const classes = useStyles();
