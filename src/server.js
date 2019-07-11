@@ -8,7 +8,6 @@ const cookieParser = require("cookie-parser");
 const PORT = 5000;
 
 const invoiceRouter = require('./server/routes/invoice.routes');
-const userRouter = require('./server/routes/user.routes');
 
 app.use(logger("dev"));
 app.use(cors());
@@ -28,7 +27,6 @@ connection.once('open', function() {
 });
 
 app.use('/invoices', invoiceRouter);
-app.use('/users', userRouter);
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
