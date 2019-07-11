@@ -11,7 +11,8 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListIcon from "@material-ui/icons/List";
 import MenuIcon from "@material-ui/icons/Menu";
-import AssessmentIcon from "@material-ui/icons/AssessmentOutlined";
+import ExposureIcon from "@material-ui/icons/Exposure";
+import AssessmentIcon from "@material-ui/icons/BarChart";
 import EventIcon from "@material-ui/icons/EventNoteOutlined";
 import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
 import AddBoxIcon from "@material-ui/icons/AddBoxOutlined";
@@ -195,7 +196,7 @@ export function Home() {
 
             <List component="nav">
               <ListItemLink
-                to="/create"
+                to="/inventory/create"
                 primary="Create Invoice"
                 icon={<NoteAddIcon fontSize="large" />}
               />
@@ -205,14 +206,15 @@ export function Home() {
                 icon={<ListIcon fontSize="large" />}
               />
               <ListItemLink
-                to="/oldinvoices"
+                to="/inventory/overview"
                 primary="Old Invoices"
                 icon={<AssessmentIcon fontSize="large" />}
               />
             </List>
             <Divider />
-
+            
             <List>
+            
             <ListItemLink
                 to="/freight/create"
                 primary="Lumber Invoice"
@@ -223,17 +225,22 @@ export function Home() {
                 primary="List Invoices"
                 icon={<EventIcon fontSize="large" />}
               />
+              <ListItemLink
+                to="/freight/mileage"
+                primary="List Invoices"
+                icon={<ExposureIcon fontSize="large" />}
+              />
             </List>
 
             <Divider />
 
             <ListItemLink
-                to="/freight/invoices"
+                to="/maintenance/create"
                 primary="Add Maintenance"
                 icon={<LibraryAddIcon fontSize="large" />}
               />
             <ListItemLink
-                to="/freight/invoices"
+                to="/maintenance/logs"
                 primary="Maintenance Log"
                 icon={<LibraryListIcon fontSize="large" />}
               />

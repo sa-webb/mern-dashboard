@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CreateInvoice } from "../components/inventory/Create";
 import { CreateFreightInvoice } from "../components/freight/Create";
-import Planets from '../components/hooks/Fetch';
+import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
 import MockFreight from '../mock/MockFreight';
 
@@ -13,7 +13,7 @@ export const routes = [
       main: () => <Planets />
     },
     {
-      path: "/create",
+      path: "/inventory/create",
       exact: true,
       main: () => <CreateInvoice />
     },
