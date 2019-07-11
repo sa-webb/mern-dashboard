@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,57 +6,53 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import InvoicesList from "../inventory/List";
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
+    width: '90%',
     marginTop: theme.spacing(3),
     overflowX: 'auto',
+    marginLeft: 15
+  },
+  button: {
+    marginTop: 5,
+    marginLeft: 5
+  },
+  buttonn: {
+    marginTop: 5,
+    marginLeft: 5,
+    color: 'red'
   },
   table: {
     minWidth: 650,
   },
+  tableCell: {
+    textTransform: 'capitalize'
+  }
 }));
 
-const Planet = props => (
-  <TableRow>
-    <TableCell>{props.invoice.name}</TableCell>
-  </TableRow>
-);
-
-function invoiceList() {
-  return this.state.planets.map(function(currentInvoice, i) {
-      return <Planet invoice={currentInvoice} key={i} />;
-  });
-}
-
-const Planets = () => {
+export default function DataLoader() {
   const classes = useStyles();
 
-  const [hasError, setErrors] = useState(false);
-  const [planets, setPlanets] = useState({});
-
-  async function fetchData() {
-    const res = await fetch("http://localhost:5000/invoices/");
-    res
-      .json()
-      .then(res => setPlanets(res))
-      .catch(err => setErrors(err));
-  }
-
+  const [data, setData] = useState([]);
   useEffect(() => {
-    fetchData();
+    fetch("http://localhost:5000/invoices/")
+      .then(response => response.json())
+      .then(data => setData(data));
   }, []);
-  console.log(planets);
+
+  console.log(data)
 
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell align="right">Name</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell align="left">Date</TableCell>
             <TableCell align="right">Tons</TableCell>
             <TableCell align="right">Species</TableCell>
             <TableCell align="right">Price</TableCell>
@@ -65,11 +60,22 @@ const Planets = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {invoiceList}
+          {data.map(row => (
+            <TableRow key={row._id}>
+              <TableCell className={classes.tableCell} component="th" scope="row">
+                {row.logger_name}
+              </TableCell>
+              <TableCell align="left">{row.date}</TableCell>
+              <TableCell align="right">{row.tons}</TableCell>
+              <TableCell className={classes.tableCell} align="right">{row.species}</TableCell>
+              <TableCell align="right">{row.price}</TableCell>
+              <TableCell align="right">{row.total}</TableCell>
+              <Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button>
+              <Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </Paper>
   );
-};
-
-export default Planets;
+}

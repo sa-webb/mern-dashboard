@@ -22,7 +22,6 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { CreateInvoice } from "../components/inventory/Create";
 import { CreateFreightInvoice } from "../components/freight/Create";
-import InvoiceList from '../components/inventory/List';
 import { ListItemLink } from "../components/helpers/ListItem";
 import Planets from '../components/hooks/Fetch';
 import MockInvoices from '../mock/MockInvoices';
@@ -116,14 +115,14 @@ const routes = [
     main: () => <CreateInvoice />
   },
   {
-    path: "/invoices",
+    path: "/inventory/invoices",
     exact: true,
-    main: () => <MockInvoices />
+    main: () => <Planets />
   },
   {
-    path: "/oldinvoices",
+    path: "/mockinvoices",
     exact: true,
-    main: () => <InvoiceList />
+    main: () => <MockInvoices />
   },
   {
     path: "/freight/create",
@@ -238,7 +237,7 @@ export function Home() {
                 icon={<NoteAddIcon fontSize="large" />}
               />
               <ListItemLink
-                to="/invoices"
+                to="/inventory/invoices"
                 primary="Invoices"
                 icon={<ListIcon fontSize="large" />}
               />
