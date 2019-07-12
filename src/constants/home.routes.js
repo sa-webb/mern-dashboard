@@ -6,6 +6,7 @@ import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
 import MockFreight from '../mock/MockFreight';
 import Dashboard from '../mock/Dashboard/Dashboard.jsx';
+import Overview from '../mock/MockOverview.jsx';
 
 export const routes = [
     {
@@ -22,6 +23,11 @@ export const routes = [
       path: "/inventory/invoices",
       exact: true,
       main: () => <Planets />
+    },
+    {
+      path: "/inventory/overview",
+      exact: true,
+      main: () => <Overview />
     },
     {
       path: "/mockinvoices",

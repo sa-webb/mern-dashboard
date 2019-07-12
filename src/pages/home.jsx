@@ -207,7 +207,7 @@ export function Home() {
               />
               <ListItemLink
                 to="/inventory/overview"
-                primary="Old Invoices"
+                primary="Overview"
                 icon={<AssessmentIcon fontSize="large" />}
               />
             </List>
