@@ -29,7 +29,7 @@ router.get('/total', async (req, res) => {
     if (err) {
       res.json(500, err);
     } else {    
-      res.json({results: results});
+      res.json(results);
     }
   })
 

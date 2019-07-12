@@ -5,12 +5,13 @@ import { CreateFreightInvoice } from "../components/freight/Create";
 import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
 import MockFreight from '../mock/MockFreight';
+import Dashboard from '../mock/Dashboard/Dashboard.jsx';
 
 export const routes = [
     {
       path: "/",
       exact: true,
-      main: () => <Planets />
+      main: () => <Dashboard />
     },
     {
       path: "/inventory/create",

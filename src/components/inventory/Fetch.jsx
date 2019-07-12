@@ -8,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,19 +35,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const fs = require('fs');
+
+
+
 const TotalLoads = () => {
-  const [count, setCount] = useState([]);
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/invoices/total")
       .then(response => response.json())
-      .then(count => setCount(count));
+      .then(data => setData(data));
   }, []);
 
-  console.log(count);
+  const showTotal = data.map((number) => 
+  <Typography variant="h5" component="h3">
+    Total Loads: {number.count}
+  </Typography>
+  )
+
   return (
-    <p>{JSON.stringify(count)}</p>
+    <ul>{showTotal}</ul>
+
   )
 }
+
 const Layout = () => (
   <React.Fragment>
     <TotalLoads />
