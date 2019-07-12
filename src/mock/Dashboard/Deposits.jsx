@@ -8,18 +8,24 @@ const useStyles = makeStyles({
   depositContext: {
     flex: 1,
   },
+  spacing: {
+    marginTop: 10
+  }
 });
 
 export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
-      <Typography component="p" variant="h4">
-        $3,024.00
+      <Title>Log Purchases</Title>
+      <Typography className={classes.spacing} component="p" variant="h4">
+        $4,629.60
+      </Typography>
+      <Typography className={classes.spacing} component="p" variant="h4">
+        68.91 Tons
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+        15 July, 2019
       </Typography>
       <div>
         <Link color="primary" href="/">

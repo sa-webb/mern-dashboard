@@ -9,6 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import { Link } from 'react-router-dom';
+
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '85%',
@@ -26,8 +29,7 @@ const useStyles = makeStyles(theme => ({
   buttonn: {
     marginTop: 5,
     marginLeft: 5,
-    color: 'white',
-    backgroundColor: 'red'
+    color: 'red'
   },
   columnTitle: {
     fontWeight: 'bold'
@@ -87,8 +89,8 @@ function MockFreight() {
               <TableCell align="left">{row.date}</TableCell>
               <TableCell align="center">{row.vendor}</TableCell>
               <TableCell align="center">{row.customer}</TableCell>
-              <Button className={classes.button} color="primary" variant="text" >Edit</Button>
-              <Button className={classes.buttonn} variant="text" >Delete</Button>
+              <Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button>
+              <Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button>
             </TableRow>
           ))}
         </TableBody>

@@ -9,16 +9,17 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
+function createData(date, name, tons, species, price, amount) {
+  return { date, name, tons, species, price, amount };
 }
 
 const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
+  createData('07/08/2019', 'Chip Johnson', 31.2, 'Red Oak', 60, 1800.00),
+  createData('07/08/2019', 'Gary Busby', 13.22, 'Red Oak', 60, 865.32),
+  createData('07/09/2019', 'Gerald Pritchard', 29.6, 'White oak', 80, 1600.00),
+  createData('07/08/2019', 'Chip Johnson', 33.40, 'Red Oak', 60, 1800.00),
+  createData('07/08/2019', 'Gary Busby', 14.16, 'Red Oak', 60, 865.32),
+  createData('07/09/2019', 'Gerald Pritchard', 30.06, 'White oak', 80, 1600.00)
 ];
 
 const useStyles = makeStyles(theme => ({
@@ -35,20 +36,22 @@ export default function Orders() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
+            <TableCell>Date</TableCell>
+            <TableCell>Tons</TableCell>
+            <TableCell>Species</TableCell>
+            <TableCell>Price</TableCell>
             <TableCell align="right">Sale Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
+              <TableCell>{row.date}</TableCell>
+              <TableCell>{row.tons}</TableCell>
+              <TableCell>{row.species}</TableCell>
+              <TableCell>{row.price}</TableCell>
               <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
           ))}

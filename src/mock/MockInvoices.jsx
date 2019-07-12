@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -87,8 +88,8 @@ function MockInvoices() {
               <TableCell align="right">{row.species}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="right">{row.amount}</TableCell>
-              <Button className={classes.button} color="primary" variant="text">Edit</Button>
-              <Button className={classes.buttonn} color="primary" variant="text">Delete</Button>
+              <Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button>
+              <Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button>
             </TableRow>
           ))}
         </TableBody>

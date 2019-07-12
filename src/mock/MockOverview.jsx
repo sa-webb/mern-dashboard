@@ -5,9 +5,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Chart from './Dashboard/Chart';
-import Deposits from './Dashboard/Deposits';
-import Orders from './Dashboard/Orders';
+
+import RedOak from './Overview/RedOak';
+import WhiteOak from './Overview/WhiteOak';
+import Poplar from './Overview/Poplar';
+import Hickory from './Overview/Hickory';
+import MixedWood from './Overview/MixedWood';
+import Pine from './Overview/Pine';
 
 const drawerWidth = 240;
 
@@ -105,24 +109,34 @@ export default function MockOverview() {
             {/* Chart */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <RedOak title="Red Oak"/>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <MixedWood title="Mixed Wood"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <Poplar title="Poplar"/>
               </Paper>
             </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <WhiteOak title="White Oak"/>
+              </Paper>
+            </Grid>
+            {/* Recent Deposits */}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Hickory title="Hickory"/>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Pine title="Pine"/>
               </Paper>
             </Grid>
           </Grid>
