@@ -8,7 +8,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -34,10 +33,6 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize'
   }
 }));
-
-const fs = require('fs');
-
-
 
 const TotalLoads = () => {
   const [data, setData] = useState([]);
