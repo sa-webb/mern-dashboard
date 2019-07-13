@@ -11,6 +11,7 @@ export const AppRouter = () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/inventory/invoices" component={Home} />
 
                 <Route exact path="/inventory" component={Inventory} />
 

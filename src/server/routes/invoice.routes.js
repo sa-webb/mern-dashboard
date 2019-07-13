@@ -32,7 +32,43 @@ router.get('/total', async (req, res) => {
       res.json(results);
     }
   })
+});
 
-})
+router.route('/update/:id').post(function(req, res) {
+  Invoice.findById(req.params.id, function(err, invoice) {
+      if (!invoice)
+          res.status(404).send('data is not found');
+      else
+          invoice.date = req.body.date;
+          invoice.name = req.body.name;
+          invoice.full = req.body.full;
+          invoice.empty = req.body.empty;
+          invoice.pounds = req.body.pounds;
+          invoice.tons = req.body.tons;
+          invoice.species = req.body.species;
+          invoice.price = req.body.price;
+          invoice.total = req.body.total;
+
+          invoice.save().then(invoice => {
+              res.json('invoice updated');
+          })
+          .catch(err => {
+              res.status(400).send("Update not possible");
+          });
+  });
+});
+
+router.route('/delete/:id').delete(function(req, res) {
+  Invoice.remove({
+    _id: req.params.id,
+  }, function(err, invoice) {
+      if (err)
+        return console.error(err);
+
+      console.log('Successfully removed!');
+      res.status(200).send();
+    
+  })
+});
 
 module.exports = router;
