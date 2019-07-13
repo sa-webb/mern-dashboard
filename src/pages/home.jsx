@@ -16,7 +16,9 @@ import AssessmentIcon from "@material-ui/icons/BarChart";
 import EventIcon from "@material-ui/icons/EventNoteOutlined";
 import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
 import AddBoxIcon from "@material-ui/icons/AddBoxOutlined";
+// eslint-disable-next-line
 import LibraryAddIcon from "@material-ui/icons/LibraryAddOutlined";
+// eslint-disable-next-line
 import LibraryListIcon from "@material-ui/icons/LibraryBooksOutlined";
 import clsx from "clsx";
 import React from "react";
@@ -160,7 +162,7 @@ export function Home() {
                 <Link
                   variant="button"
                   color="inherit"
-                  href="#"
+                  href="/records"
                   className={classes.link}
                 >
                   Records
@@ -234,7 +236,7 @@ export function Home() {
 
             <Divider />
 
-            <ListItemLink
+            {/* <ListItemLink
                 to="/maintenance/create"
                 primary="Add Maintenance"
                 icon={<LibraryAddIcon fontSize="large" />}
@@ -243,7 +245,7 @@ export function Home() {
                 to="/maintenance/logs"
                 primary="Maintenance Log"
                 icon={<LibraryListIcon fontSize="large" />}
-              />
+              /> */}
 
           </Drawer>
 
