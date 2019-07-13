@@ -19,19 +19,17 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     marginTop: 5,
-    marginLeft: 5,
   },
   buttonn: {
     marginTop: 5,
-    marginLeft: 5,
-    color: 'red'
+    color: 'red',
   },
   table: {
     minWidth: 650,
   },
   tableCell: {
     textTransform: 'capitalize'
-  }
+  },
 }));
 
 const TotalLoads = () => {
@@ -84,11 +82,12 @@ function DataLoader() {
             <TableCell align="right">Species</TableCell>
             <TableCell align="right">Price</TableCell>
             <TableCell align="right">Amount</TableCell>
+            <TableCell align="center" >Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map(row => (
-            <TableRow key={row._id}>
+            <TableRow  key={row._id}>
               <TableCell className={classes.tableCell} component="th" scope="row">
                 {row.logger_name}
               </TableCell>
@@ -97,8 +96,10 @@ function DataLoader() {
               <TableCell className={classes.tableCell} align="right">{row.species}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="right">{row.total}</TableCell>
-              <Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button>
-              <Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button>
+              <TableCell align="center" size="small">
+                <Button className={classes.button} size="small" color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button>
+                <Button className={classes.buttonn} size="small" to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
