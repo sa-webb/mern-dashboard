@@ -37,7 +37,7 @@ export default function Poplar(props) {
           <XAxis dataKey="time" />
           <YAxis>
             <Label angle={270} position="left" style={{ textAnchor: 'middle' }}>
-              Output (board ft.)
+            Tons
             </Label>
           </YAxis>
           <Line type="monotone" dataKey="amount" stroke="#556CD6" dot={false} />
