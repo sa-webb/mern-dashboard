@@ -20,10 +20,316 @@ router.get("/", async (req, res) => {
   res.json(invoices);
 });
 
+// router.route('/:id').get(function(req, res) {
+//   let id = req.params.id;
+//   Invoice.findById(id, function(err, invoice) {
+//       if (err) {
+//           console.log(err);
+//       } else { 
+//       res.json(invoice);
+//       }
+//   });
+// });
+
 router.get('/total', async (req, res) => {
   Invoice.aggregate([
     {
       $count: 'count'
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/tons', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $group: {
+        _id: 1, 
+        total: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/poplar', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'poplar'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/poplartotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'poplar'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/redoak', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'red oak'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/redoaktotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'red oak'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/whiteoak', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'white oak'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/whiteoaktotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'white oak'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/mixed', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'mx'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/mixedtotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'mx'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/pine', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'pine'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/pinetotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'pine'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/hickory', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'hickory'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/hickorytotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'hickory'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
     }
   ], function(err, results) {
     if (err) {
