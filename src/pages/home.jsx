@@ -16,6 +16,7 @@ import AssessmentIcon from "@material-ui/icons/BarChart";
 import EventIcon from "@material-ui/icons/EventNoteOutlined";
 import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
 import AddBoxIcon from "@material-ui/icons/AddBoxOutlined";
+import ViewModuleIcon from "@material-ui/icons/ViewModule"
 // eslint-disable-next-line
 import LibraryAddIcon from "@material-ui/icons/LibraryAddOutlined";
 // eslint-disable-next-line
@@ -211,6 +212,11 @@ export function Home() {
                 to="/inventory/overview"
                 primary="Overview"
                 icon={<AssessmentIcon fontSize="large" />}
+              />
+              <ListItemLink
+                to="/inventory/summary"
+                primary="Summary"
+                icon={<ViewModuleIcon fontSize="large" />}
               />
             </List>
             <Divider />
