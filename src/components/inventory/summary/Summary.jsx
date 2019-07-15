@@ -6,7 +6,15 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-import Tile from '../Tile';
+// eslint-disable-next-line
+import Tile from '../../Tile';
+
+import Poplar from './Poplar';
+import RedOak from './RedOak';
+import WhiteOak from './WhiteOak';
+import Mixed from './Mixed';
+import Pine from './Pine';
+import Hickory from './Hickory';
 
 const drawerWidth = 240;
 
@@ -104,34 +112,34 @@ export default function Summary() {
             {/* Chart */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Tile title="Red Oak"/>
+                <RedOak title="Red Oak"/>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Tile title="Mixed Wood"/>
+                <Mixed title="Mixed Wood"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Tile title="Poplar"/>
+                <Poplar title="Poplar"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Tile title="White Oak"/>
+                <WhiteOak title="White Oak"/>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Tile title="Hickory"/>
+                <Hickory title="Hickory"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Tile title="Pine"/>
+                <Pine title="Pine"/>
               </Paper>
             </Grid>
           </Grid>
