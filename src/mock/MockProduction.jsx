@@ -5,7 +5,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Chart from './Dashboard/Chart';
+
+import Chart1 from './Production/Chart1';
+import Chart2 from './Production/Chart2';
+import Chart3 from './Production/Chart3';
 
 const drawerWidth = 240;
 
@@ -107,17 +110,17 @@ export default function MockProduction() {
             {/* Chart */}
             <Grid item xs={12} md={12} lg={8}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart1 title="Today"/>
               </Paper>
             </Grid>
             <Grid item xs={12} md={12} lg={8}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart2 title="13th"/>
               </Paper>
             </Grid>
             <Grid className={classes.bottom} item xs={12} md={12} lg={8}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart3 title="12th"/>
               </Paper>
             </Grid>
             
