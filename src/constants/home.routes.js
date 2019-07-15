@@ -7,6 +7,7 @@ import MockInvoices from '../mock/MockInvoices';
 import MockFreight from '../mock/MockFreight';
 import Dashboard from '../mock/Dashboard/Dashboard.jsx';
 import Overview from '../mock/MockOverview.jsx';
+import Summary from '../components/inventory/summary/Summary';
 
 export const routes = [
     {
@@ -28,6 +29,11 @@ export const routes = [
       path: "/inventory/overview",
       exact: true,
       main: () => <Overview />
+    },
+    {
+      path: "/inventory/summary",
+      exact: true,
+      main: () => <Summary />
     },
     {
       path: "/mockinvoices",
