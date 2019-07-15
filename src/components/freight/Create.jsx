@@ -6,21 +6,11 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+//import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Review from './Review';
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI
-      </Link>
-      {' team.'}
-    </Typography>
-  );
-}
+import MockFreight from '../../mock/MockFreight';
 
 const useStyles = makeStyles(theme => ({
   layout: {
@@ -63,7 +53,7 @@ function getStepContent(step) {
     case 0:
       return <Review />;
     case 1:
-      return <Review />;
+      return <MockFreight />;
     case 2:
       return <Review />;
     default:
@@ -131,7 +121,6 @@ export function CreateFreightInvoice() {
             )}
           </React.Fragment>
         </Paper>
-        <MadeWithLove />
       </main>
     </React.Fragment>
   );
