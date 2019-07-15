@@ -13,6 +13,7 @@ import {
 } from "@material-ui/pickers";
 import { Button } from "@material-ui/core";
 import { Species as types } from "../../data/Species";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,6 +33,9 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3),
     marginLeft: 80,
     width: 100
+  },
+  paper: {
+    width: 500
   }
 }));
 
@@ -91,6 +95,7 @@ export function CreateInvoice() {
   return (
     <div className={classes.root}>
       <form onSubmit={onSubmit}>
+        <Paper className={classes.paper}>
         <TextField
           id="outlined-adornment-name"
           className={clsx(classes.margin, classes.textField)}
@@ -207,6 +212,7 @@ export function CreateInvoice() {
         >  
            Create 
         </Button>
+        </Paper>
       </form>
     </div>
   );
