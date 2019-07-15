@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { CreateInvoice } from "../components/inventory/Create";
-import { CreateFreightInvoice } from "../components/freight/Create";
+import { Steps } from "../components/freight/Stepper";
 import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
 import MockFreight from '../mock/MockFreight';
 import Dashboard from '../mock/Dashboard/Dashboard.jsx';
 import Overview from '../mock/MockOverview.jsx';
 import Summary from '../components/inventory/summary/Summary';
+import MockProduction from '../mock/MockProduction';
 
 export const routes = [
     {
@@ -36,6 +37,11 @@ export const routes = [
       main: () => <Summary />
     },
     {
+      path: "/inventory/production",
+      exact: true,
+      main: () => <MockProduction />
+    },
+    {
       path: "/mockinvoices",
       exact: true,
       main: () => <MockInvoices />
@@ -43,7 +49,7 @@ export const routes = [
     {
       path: "/freight/create",
       exact: true,
-      main: () => <CreateFreightInvoice />
+      main: () => <Steps />
     },
     {
       path: "/freight/invoices",
