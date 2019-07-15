@@ -16,7 +16,8 @@ import AssessmentIcon from "@material-ui/icons/BarChart";
 import EventIcon from "@material-ui/icons/EventNoteOutlined";
 import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
 import AddBoxIcon from "@material-ui/icons/AddBoxOutlined";
-import ViewModuleIcon from "@material-ui/icons/ViewModule"
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
+import DateRangeIcon from "@material-ui/icons/DateRangeOutlined";
 // eslint-disable-next-line
 import LibraryAddIcon from "@material-ui/icons/LibraryAddOutlined";
 // eslint-disable-next-line
@@ -217,6 +218,11 @@ export function Home() {
                 to="/inventory/summary"
                 primary="Summary"
                 icon={<ViewModuleIcon fontSize="large" />}
+              />
+              <ListItemLink
+                to="/inventory/production"
+                primary="Summary"
+                icon={<DateRangeIcon fontSize="large" />}
               />
             </List>
             <Divider />
