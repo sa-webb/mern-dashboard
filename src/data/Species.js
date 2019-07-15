@@ -16,6 +16,14 @@ export const Species = [
     label: "Poplar"
   },
   {
+    value: "pine",
+    label: "Pine"
+  },
+  {
+    value: "hickory",
+    label: "Hickory"
+  },
+  {
     value: "misc",
     label: "Misc"
   }
