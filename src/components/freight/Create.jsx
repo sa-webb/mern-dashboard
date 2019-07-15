@@ -1,127 +1,236 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-//import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
-import Review from './Review';
-
-import MockFreight from '../../mock/MockFreight';
+import React from "react";
+import axios from "axios";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+import { Button } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 900,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  margin: {
+    margin: theme.spacing(4)
+  },
+  textField: {
+    flexBasis: 400,
+    width: 200
+  },
+  buttonMargin: {
+    margin: theme.spacing(3),
+    width: 100
   },
   paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
-  },
-  stepper: {
-    padding: theme.spacing(3, 0, 5),
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-  },
+    flex: 1
+  }
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <Review />;
-    case 1:
-      return <MockFreight />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
+const initialState = {
+  id: "",
+  date: "",
+  vendor: "",
+  customer: "",
+  product_order_id: "",
+  q1: "",
+  d1: "",
+  am1: "",
+  q2: "",
+  d2: "",
+  am2: "",
+  q3: "",
+  d3: "",
+  am3: "",
+  q4: "",
+  d4: "",
+  am4: "",
+  total: ""
+};
 
 export function CreateFreightInvoice() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
+  const [
+    {
+      id,
+      vendor,
+      customer,
+      product_order_id,
+      q1,
+      d1,
+      am1,
+      q2,
+      d2,
+      am2,
+      q3,
+      d3,
+      am3,
+      q4,
+      d4,
+      am4,
+      total
+    },
+    setState
+  ] = React.useState(initialState);
+
+  const clearState = () => {
+    setState({ ...initialState });
   };
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
+  const onChange = e => {
+    const { name, value } = e.target;
+    setState(prevState => ({ ...prevState, [name]: value }));
+  };
+
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+  function handleDateChange(date) {
+    setSelectedDate(date);
+  }
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const newInvoice = {
+      id: id,
+      date: selectedDate,
+      vendor: vendor,
+      customer: customer,
+      product_order_id: product_order_id,
+      q1: q1,
+      d1: d1,
+      am1: am1,
+      q2: q2,
+      d2: d2,
+      am2: am2,
+      q3: q3,
+      d3: d3,
+      am3: am3,
+      q4: q4,
+      d4: d4,
+      am4: am4,
+      total: total
+    };
+    axios
+      .post("http://localhost:5000/invoices/add", newInvoice)
+      .then(clearState);
   };
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <main className={classes.layout}>
+    <div className={classes.root}>
+      <form onSubmit={onSubmit}>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
-            Johnson Sawmill
-          </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map(label => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
-              </React.Fragment>
-            )}
-          </React.Fragment>
+          <TextField
+            id="outlined-adornment-name"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            name="id"
+            label="Inv. #"
+            value={id}
+            onChange={onChange}
+          />
+
+          <TextField
+            id="outlined-adornment-weight"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            label="Vendor"
+            name="vendor"
+            value={vendor}
+            onChange={onChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">lbs</InputAdornment>
+            }}
+          />
+
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              className={classes.margin}
+              id="mui-pickers-date"
+              label="Date picker"
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                "aria-label": "change date"
+              }}
+            />
+          </MuiPickersUtilsProvider>
+          
+          <TextField
+            id="outlined-adornment-weight"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            label="Customer"
+            name="customer"
+            value={customer}
+            onChange={onChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">lbs</InputAdornment>
+            }}
+          />
+          <TextField
+            id="outlined-adornment-weight"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            name="product_order_id"
+            label="P.O. #"
+            value={product_order_id}
+            onChange={onChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">lbs</InputAdornment>
+            }}
+          />
+          <TextField
+            id="outlined-adornment-weight"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            name="q1"
+            label="Quantity 1"
+            value={q1}
+            onChange={onChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">tons</InputAdornment>
+            }}
+          />
+          <TextField
+            id="outlined-adornment-weight"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            name="am1"
+            label="Amount 1"
+            value={am1}
+            onChange={onChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">tons</InputAdornment>
+            }}
+          />
+          <TextField
+            id="outlined-adornment-weight"
+            className={clsx(classes.margin, classes.textField)}
+            variant="outlined"
+            name="d1"
+            label="Description 1"
+            value={d1}
+            onChange={onChange}
+          />
+          <Button
+            className={classes.buttonMargin}
+            variant="contained"
+            size="large"
+            color="primary"
+            type="submit"
+          >
+            Create
+          </Button>
         </Paper>
-      </main>
-    </React.Fragment>
+      </form>
+    </div>
   );
 }
