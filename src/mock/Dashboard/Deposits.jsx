@@ -51,15 +51,15 @@ export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Log Purchases</Title>
+      <Title>Today</Title>
       <TotalLoads />
       <TotalTons />
       <Typography color="textSecondary" className={classes.depositContext}>
         15 July, 2019
       </Typography>
       <div>
-        <Link color="primary" href="/">
-          View balance
+        <Link color="primary" href="/inventory/invoices">
+          View loads
         </Link>
       </div>
     </React.Fragment>
