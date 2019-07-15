@@ -1,26 +1,25 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '85%',
+    width: "85%",
     marginTop: theme.spacing(3),
-    overflowX: 'auto',
+    overflowX: "auto",
     marginLeft: 40
   },
   table: {
-    minWidth: 650,
+    minWidth: 650
   },
   button: {
     marginTop: 5,
@@ -29,10 +28,10 @@ const useStyles = makeStyles(theme => ({
   buttonn: {
     marginTop: 5,
     marginLeft: 5,
-    color: 'red'
+    color: "red"
   },
   columnTitle: {
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 }));
 
@@ -41,12 +40,12 @@ function createData(id, date, vendor, customer, quantity, description, amount) {
 }
 
 const rows = [
-  createData(121,'07/08/2019', 'TM Wood Products', 'Ferche Millworks',),
-  createData(122,'07/09/2019', 'TM Wood Products', 'Menzer Lumber', ),
-  createData(123,'07/10/2019', 'Volunteer Pallet', 'Volunteer Pallet',),
-  createData(124,'07/11/2019', 'TM Wood Products', 'Mohawk Lumber',),
-  createData(125,'07/12/2019', 'TM Wood Products', 'Mohawk Lumber',),
-  createData(126,'07/13/2019', 'Pallet Factory', 'Pallet Factory',)
+  createData(121, "07/08/2019", "TM Wood Products", "Ferche Millworks"),
+  createData(122, "07/09/2019", "TM Wood Products", "Menzer Lumber"),
+  createData(123, "07/10/2019", "Volunteer Pallet", "Volunteer Pallet"),
+  createData(124, "07/11/2019", "TM Wood Products", "Mohawk Lumber"),
+  createData(125, "07/12/2019", "TM Wood Products", "Mohawk Lumber"),
+  createData(126, "07/13/2019", "Pallet Factory", "Pallet Factory")
 ];
 
 const Total = () => {
@@ -54,8 +53,8 @@ const Total = () => {
     <Typography variant="h5" component="h3">
       Total Loads: 6 Customers: 3
     </Typography>
-  )
-}
+  );
+};
 
 const Layout = () => {
   return (
@@ -63,8 +62,8 @@ const Layout = () => {
       <Total />
       <MockFreight />
     </React.Fragment>
-  )
-}
+  );
+};
 
 function MockFreight() {
   const classes = useStyles();
@@ -74,10 +73,18 @@ function MockFreight() {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell className={classes.columnTitle}>Invoice Number</TableCell>
-            <TableCell className={classes.columnTitle} align="left">Date</TableCell>
-            <TableCell className={classes.columnTitle} align="center">Vendor</TableCell>
-            <TableCell className={classes.columnTitle} align="center">Customer</TableCell>
+            <TableCell className={classes.columnTitle}>
+              Invoice Number
+            </TableCell>
+            <TableCell className={classes.columnTitle} align="left">
+              Date
+            </TableCell>
+            <TableCell className={classes.columnTitle} align="center">
+              Vendor
+            </TableCell>
+            <TableCell className={classes.columnTitle} align="center">
+              Customer
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -89,8 +96,25 @@ function MockFreight() {
               <TableCell align="left">{row.date}</TableCell>
               <TableCell align="center">{row.vendor}</TableCell>
               <TableCell align="center">{row.customer}</TableCell>
-              <TableCell><Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button></TableCell>
-              <TableCell><Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button></TableCell>
+              <TableCell>
+                <Button
+                  className={classes.button}
+                  color="primary"
+                  to={`invoices/edit/${row._id}`}
+                  component={Link}
+                  variant="text"
+                >
+                  Edit
+                </Button>
+                <Button
+                  className={classes.buttonn}
+                  to={`invoices/delete/${row._id}`}
+                  component={Link}
+                  variant="text"
+                >
+                  Delete
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
