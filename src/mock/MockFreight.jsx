@@ -89,8 +89,8 @@ function MockFreight() {
               <TableCell align="left">{row.date}</TableCell>
               <TableCell align="center">{row.vendor}</TableCell>
               <TableCell align="center">{row.customer}</TableCell>
-              <Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button>
-              <Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button>
+              <TableCell><Button className={classes.button} color="primary" to={`invoices/edit/${row._id}`} component={Link} variant="text">Edit</Button></TableCell>
+              <TableCell><Button className={classes.buttonn} to={`invoices/delete/${row._id}`} component={Link} variant="text">Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
