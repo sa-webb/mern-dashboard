@@ -24,6 +24,10 @@ export const Species = [
     label: "Hickory"
   },
   {
+    value: "cedar",
+    label: "Cedar"
+  },
+  {
     value: "misc",
     label: "Misc"
   }
