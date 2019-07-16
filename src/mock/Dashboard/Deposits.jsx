@@ -3,6 +3,7 @@ import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Title from "./Title";
+import moment from "moment";
 
 const useStyles = makeStyles({
   depositContext: {
@@ -23,7 +24,7 @@ const TotalLoads = () => {
   }, []);
 
   return data.map(number => (
-    <Typography className={classes.spacing} component="p" variant="h4">
+    <Typography className={classes.spacing} component="p" variant="h5">
     Total Loads: {number.count}
     </Typography>
   ));
@@ -41,7 +42,7 @@ const TotalTons = () => {
   console.log(data);
 
   return data.map(count => (
-    <Typography className={classes.spacing} component="p" variant="h4">
+    <Typography className={classes.spacing} component="p" variant="h5">
     {count.total} Tons
     </Typography>
   ));
@@ -55,7 +56,7 @@ export default function Deposits() {
       <TotalLoads />
       <TotalTons />
       <Typography color="textSecondary" className={classes.depositContext}>
-        15 July, 2019
+        {moment().format("MMM Do YY")}
       </Typography>
       <div>
         <Link color="primary" href="/inventory/invoices">
