@@ -221,7 +221,7 @@ export function Home() {
               />
               <ListItemLink
                 to="/inventory/production"
-                primary="Summary"
+                primary="Production"
                 icon={<DateRangeIcon fontSize="large" />}
               />
             </List>
