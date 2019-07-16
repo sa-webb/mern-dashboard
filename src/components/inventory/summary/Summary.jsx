@@ -15,6 +15,8 @@ import WhiteOak from './WhiteOak';
 import Mixed from './Mixed';
 import Pine from './Pine';
 import Hickory from './Hickory';
+import Cedar from './Cedar';
+import Misc from './Misc';
 
 const drawerWidth = 240;
 
@@ -108,8 +110,9 @@ export default function Summary() {
       <main className={classes.content}>
         <div />
         <Container maxWidth="lg" className={classes.container}>
+          {/**Space between cards */}
           <Grid container spacing={3}>
-            {/* Chart */}
+            {/**Card Spacing lq = width */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 <RedOak title="Red Oak"/>
@@ -140,6 +143,16 @@ export default function Summary() {
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 <Pine title="Pine"/>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Cedar title="Cedar"/>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Misc title="Misc"/>
               </Paper>
             </Grid>
           </Grid>
