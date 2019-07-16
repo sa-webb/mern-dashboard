@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 let Invoice = require("../models/invoice.model");
 
@@ -322,6 +322,98 @@ router.get('/hickorytotal', async (req, res) => {
     {
       $match: {
         species: 'hickory'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/cedar', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'cedar'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/cedartotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'cedar'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$total'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/misc', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'misc'
+      }
+    }, {
+      $group: {
+        _id: null, 
+        result: {
+          $sum: '$tons'
+        }
+      }
+    }
+  ], function(err, results) {
+    if (err) {
+      res.json(500, err);
+    } else {    
+      res.json(results);
+    }
+  })
+});
+
+router.get('/misctotal', async (req, res) => {
+  Invoice.aggregate([
+    {
+      $match: {
+        species: 'misc'
       }
     }, {
       $group: {
