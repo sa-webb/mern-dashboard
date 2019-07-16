@@ -19,8 +19,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
-    marginRight: 450,
-    marginLeft: 40,
+    // marginRight: 450,
+    // marginLeft: 40,
   },
   margin: {
     margin: theme.spacing(3),
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     width: 100
   },
   paper: {
-    width: 500
+    width: 550
   }
 }));
 
