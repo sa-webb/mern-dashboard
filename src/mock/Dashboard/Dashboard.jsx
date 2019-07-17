@@ -5,9 +5,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
+import Loads from './Loads';
+import Logs from './Logs';
 
 const drawerWidth = 240;
 
@@ -98,7 +98,6 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      
       <main className={classes.content}>
         <div />
         <Container maxWidth="lg" className={classes.container}>
@@ -106,7 +105,7 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Loads />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
@@ -118,7 +117,7 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Logs />
               </Paper>
             </Grid>
           </Grid>
