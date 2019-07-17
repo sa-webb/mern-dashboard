@@ -18,3 +18,8 @@
 ## Server
 
 ## Temp
+
+Route naming conventions
+
+Db ops - temp collections, extract & refresh daily triggers, heavy aggregation results temp data structure w background calculations.
+
