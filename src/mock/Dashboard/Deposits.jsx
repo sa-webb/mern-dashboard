@@ -52,7 +52,7 @@ export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>This Week</Title>
       <TotalLoads />
       <TotalTons />
       <Typography color="textSecondary" className={classes.depositContext}>
