@@ -10,6 +10,7 @@ import {
   KeyboardDatePicker
 } from "@material-ui/pickers";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
   buttonMargin: {
     margin: theme.spacing(3),
-    width: 100
+    marginLeft: 320
   },
   paper: {
     flex: 1
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const initialState = {
-  id: "",
+  num: "",
   date: "",
   vendor: "",
   customer: "",
@@ -59,7 +60,7 @@ export function CreateFreightInvoice() {
 
   const [
     {
-      id,
+      num,
       vendor,
       customer,
       product_order_id,
@@ -99,7 +100,7 @@ export function CreateFreightInvoice() {
   const onSubmit = e => {
     e.preventDefault();
     const newInvoice = {
-      id: id,
+      num: num,
       date: selectedDate,
       vendor: vendor,
       customer: customer,
@@ -120,7 +121,7 @@ export function CreateFreightInvoice() {
       total: total
     };
     axios
-      .post("http://localhost:5000/invoices/add", newInvoice)
+      .post("http://localhost:5000/freight/add", newInvoice)
       .then(clearState);
   };
 
@@ -132,9 +133,9 @@ export function CreateFreightInvoice() {
             id="outlined-adornment-name"
             className={clsx(classes.margin, classes.textField)}
             variant="outlined"
-            name="id"
+            name="num"
             label="Inv. #"
-            value={id}
+            value={num}
             onChange={onChange}
           />
 
@@ -296,6 +297,15 @@ export function CreateFreightInvoice() {
             value={am4}
             onChange={onChange}
           />
+          <Button 
+          className={classes.buttonMargin}
+          variant="contained"
+          size="large"
+          color="primary"
+          type="submit"
+          >  
+           Create Load
+        </Button>
         </Paper>
       </form>
     </div>
