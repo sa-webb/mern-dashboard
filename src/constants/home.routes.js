@@ -4,11 +4,13 @@ import { CreateInvoice } from "../components/inventory/Create";
 import { Steps } from "../components/freight/Stepper";
 import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
-import MockFreight from '../mock/MockFreight';
 import Dashboard from '../mock/Dashboard/Dashboard.jsx';
 import Overview from '../mock/MockOverview.jsx';
 import Summary from '../components/inventory/summary/Summary';
 import MockProduction from '../mock/MockProduction';
+import { Mileage } from '../components/freight/Mileage';
+import Loads from '../components/freight/Table';
+import { CreateFreightInvoice } from '../components/freight/Create';
 
 export const routes = [
     {
@@ -52,9 +54,14 @@ export const routes = [
       main: () => <Steps />
     },
     {
-      path: "/freight/invoices",
+      path: "/freight/loads",
       exact: true,
-      main: () => <MockFreight />
+      main: () => <Loads />
+    },
+    {
+      path: "/freight/mileage",
+      exact: true,
+      main: () => <Mileage />
     },
   
   ];

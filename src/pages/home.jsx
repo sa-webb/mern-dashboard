@@ -235,7 +235,7 @@ export function Home() {
                 icon={<AddBoxIcon fontSize="large" />}
               />
               <ListItemLink
-                to="/freight/invoices"
+                to="/freight/loads"
                 primary="List Invoices"
                 icon={<EventIcon fontSize="large" />}
               />
