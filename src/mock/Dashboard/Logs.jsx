@@ -22,7 +22,7 @@ export default function Logs() {
 
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/invoices/")
+    fetch("http://localhost:5000/invoices/quicklook")
       .then(response => response.json())
       .then(data => setData(data));
   }, []);
@@ -35,7 +35,7 @@ export default function Logs() {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Date</TableCell>
+            <TableCell align="left">Date</TableCell>
             <TableCell>Tons</TableCell>
             <TableCell>Species</TableCell>
           </TableRow>
@@ -44,9 +44,9 @@ export default function Logs() {
           {data.map(row => (
             <TableRow key={row._id}>
               <TableCell className={classes.tableCell}>{row.logger_name}</TableCell>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.tons}</TableCell>
-              <TableCell className={classes.tableCell}>{row.species}</TableCell>
+              <TableCell align="left">{row.date}</TableCell>
+              <TableCell align="left">{row.tons}</TableCell>
+              <TableCell align="left" className={classes.tableCell}>{row.species}</TableCell>
             </TableRow>
           ))}
         </TableBody>

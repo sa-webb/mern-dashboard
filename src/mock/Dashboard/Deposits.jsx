@@ -25,7 +25,7 @@ const TotalLoads = () => {
 
   return data.map(number => (
     <Typography className={classes.spacing} component="p" variant="h5">
-    Total Loads: {number.count}
+    Loads: {number.count}
     </Typography>
   ));
 };
@@ -48,16 +48,35 @@ const TotalTons = () => {
   ));
 };
 
+const TotalFreightLoads = () => {
+  const classes = useStyles();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/freight/count")
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []);
+
+  console.log(data);
+
+  return data.map(number => (
+    <Typography className={classes.spacing} component="p" variant="h5">
+    Shipments: {number.count}
+    </Typography>
+  ));
+};
+
 export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
       <Title>This Week</Title>
+      <Typography color="textSecondary" className={classes.depositContext}>
+        {moment().format("MMMM Do")} - {moment().subtract(6, "days").format("MMMM Do")}
+      </Typography>
       <TotalLoads />
       <TotalTons />
-      <Typography color="textSecondary" className={classes.depositContext}>
-        {moment().format("MMM Do YY")}
-      </Typography>
+      <TotalFreightLoads />
       <div>
         <Link color="primary" href="/inventory/invoices">
           View loads
