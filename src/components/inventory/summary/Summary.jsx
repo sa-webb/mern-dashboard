@@ -6,9 +6,6 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-// eslint-disable-next-line
-import Tile from '../../Tile';
-
 import Poplar from './Poplar';
 import RedOak from './RedOak';
 import WhiteOak from './WhiteOak';
