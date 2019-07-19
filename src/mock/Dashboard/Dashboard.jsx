@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import moment from 'moment';
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -69,7 +71,6 @@ const useStyles = makeStyles(theme => ({
       width: theme.spacing(9),
     },
   },
-  
   content: {
     flexGrow: 1,
     height: '100vh',
@@ -85,6 +86,10 @@ const useStyles = makeStyles(theme => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  date: {
+    display: 'flex',
+    marginLeft: 15
+  },
   fixedHeight: {
     height: 240,
   },
@@ -98,28 +103,38 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      
       <main className={classes.content}>
+      <Typography className={classes.date} variant ="h5" component="h3">
+        {moment().format("dddd MMMM Do")}
+      </Typography>
         <div />
         <Container maxWidth="lg" className={classes.container}>
+          
           <Grid container spacing={3}>
-            {/* Chart */}
+
+          <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+
+                <Deposits />
+                
+              </Paper>
+            </Grid>
+
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
+
                 <Loads />
+
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
+            
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Logs />
               </Paper>
             </Grid>
+
           </Grid>
         </Container>
       </main>
