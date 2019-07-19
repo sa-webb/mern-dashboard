@@ -469,4 +469,9 @@ router.route('/delete/:id').delete(function(req, res) {
   })
 });
 
+router.get("/quicklook", async (req, res) => {
+  const loads = await Invoice.find({}).limit(5);
+  res.json(loads);
+})
+
 module.exports = router;
