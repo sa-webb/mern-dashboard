@@ -141,7 +141,7 @@ export function Home() {
               >
                 <MenuIcon />
               </IconButton>
-              <Link variant="h6" color="inherit" href="/" className={classes.toolbarTitle} >
+              <Link variant="h6" underline="none" color="inherit" href="/" className={classes.toolbarTitle} >
                 Reckon
               </Link>
               <nav>
