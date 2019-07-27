@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CreateInvoice } from "../components/inventory/Create";
+import { CreateItems } from "../components/items/Create";
 import { Steps } from "../components/freight/Stepper";
 import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
@@ -21,6 +22,11 @@ export const routes = [
       path: "/inventory/create",
       exact: true,
       main: () => <CreateInvoice />
+    },
+    {
+      path: "/items/add",
+      exact: true,
+      main: () => <CreateItems />
     },
     {
       path: "/inventory/invoices",

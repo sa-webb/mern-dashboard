@@ -205,6 +205,11 @@ export function Home() {
                 icon={<NoteAddIcon fontSize="large" />}
               />
               <ListItemLink
+                to="/items/add"
+                primary="Create Item"
+                icon={<NoteAddIcon fontSize="large" />}
+              />
+              <ListItemLink
                 to="/inventory/invoices"
                 primary="Invoices"
                 icon={<ListIcon fontSize="large" />}
