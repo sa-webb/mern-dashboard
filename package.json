@@ -29,6 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "format": "prettier --write src/**/*.{js,jsx}",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
   }
 }
