@@ -23,6 +23,7 @@ app.use(logger('combined', { stream: accessLogStream }));
 
 const invoiceRouter = require('./server/routes/invoice.routes');
 const freightRouter = require('./server/routes/freight.routes');
+const itemRouter = require('./server/routes/item.routes');
 
 app.use(logger('dev'));
 app.use(cors());
@@ -43,6 +44,7 @@ connection.once('open', function() {
 
 app.use('/invoices', invoiceRouter);
 app.use('/freight', freightRouter);
+app.use('/items', itemRouter);
 
 app.listen(PORT, function() {
   console.log('Server is running on Port: ' + PORT);
