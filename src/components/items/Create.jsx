@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import { Button } from '@material-ui/core';
-import { Species as types } from '../../data/Species';
 import Paper from '@material-ui/core/Paper';
 import { Items as items } from '../../data/Items';
 
@@ -64,6 +63,7 @@ export function CreateItems() {
       quantity: quantity,
       unit_price: unit_price
     };
+    
     axios.post('http://localhost:5000/items/add', newItems).then(clearState);
   };
 
