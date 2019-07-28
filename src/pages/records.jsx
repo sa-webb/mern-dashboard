@@ -14,7 +14,7 @@ import SortIcon from '@material-ui/icons/Sort';
 import ViewHeadline from '@material-ui/icons/ViewHeadline';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ListItemLink } from '../components/helpers/ListItem';
-import CustomizedTables from '../data/CustomizedTables';
+import CustomizedTables from '../temp/CustomizedTables';
 import { NavBar } from '../components/NavBar';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
