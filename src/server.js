@@ -7,19 +7,19 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const PORT = 5000;
 
-var fs = require('fs');
-var path = require('path');
+// var fs = require('fs');
+// var path = require('path');
 
 // console.log(__dirname);
 
-var accessLogStream = fs.createWriteStream(
-  path.join(
-    '/Users/Austin/Desktop/voltam/reckon-bi/src/server/logs/',
-    'access.log'
-  ),
-  { flags: 'a' }
-);
-app.use(logger('combined', { stream: accessLogStream }));
+// var accessLogStream = fs.createWriteStream(
+//   path.join(
+//     '/Users/Austin/Desktop/voltam/reckon-bi/src/server/logs/',
+//     'access.log'
+//   ),
+//   { flags: 'a' }
+// );
+// app.use(logger('combined', { stream: accessLogStream }));
 
 const invoiceRouter = require('./server/routes/invoice.routes');
 const freightRouter = require('./server/routes/freight.routes');
