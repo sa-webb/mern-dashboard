@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { Home } from './pages/home';
 import { Inventory } from './pages/inventory';
@@ -11,7 +11,6 @@ export const AppRouter = () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/freight/mileage" component={Home} />
 
                 <Route exact path="/inventory" component={Inventory} />
 
