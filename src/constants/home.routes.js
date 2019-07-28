@@ -5,12 +5,12 @@ import { CreateItems } from "../components/items/Create";
 import { Steps } from "../components/freight/Stepper";
 import Planets from '../components/inventory/Fetch';
 import MockInvoices from '../mock/MockInvoices';
-import Dashboard from '../mock/Dashboard/Dashboard.jsx';
 import Overview from '../mock/MockOverview.jsx';
 import Summary from '../components/inventory/summary/Summary';
 import MockProduction from '../mock/MockProduction';
 import { Mileage } from '../components/freight/Mileage';
 import Loads from '../components/freight/Table';
+import Dashboard from '../components/dashboard/Dashboard';
 
 export const routes = [
     {
