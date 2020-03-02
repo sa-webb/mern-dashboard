@@ -62,7 +62,7 @@ export function NavBar() {
                 noWrap
                 className={classes.toolbarTitle}
               >
-                Reckon
+                Dashboard
               </Link>
               <nav>
                 <Link
