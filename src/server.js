@@ -36,7 +36,7 @@ const options = {
   useNewUrlParser: true
 };
 
-mongoose.connect('mongodb://127.0.0.1:27017/reckon', options);
+mongoose.connect('mongodb://127.0.0.1:27017/<db_name>', options);
 const connection = mongoose.connection;
 connection.once('open', function() {
   console.log('MongoDB database connection established successfully');
