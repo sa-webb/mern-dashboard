@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.0.0-alpha.35",
     "express": "^4.17.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "prop-types": "^15.7.2",
